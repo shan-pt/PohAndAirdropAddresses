@@ -1,0 +1,98 @@
+[
+  {
+    "0x23069f1978fe4d6ec88bf0b84bca2b39d3b285e1": {
+      "market1": true,
+      "market2": false,
+      "market3": false,
+      "market4": true,
+      "market5": false,
+      "market6": false,
+      "market7": true,
+      "market8": true
+    }
+  },
+  {
+    "0x5e7b645d5bf86750cb1913122ba8a8545e2a9fd1": {
+      "market1": false,
+      "market2": false,
+      "market3": false,
+      "market4": false,
+      "market5": false,
+      "market6": false,
+      "market7": false,
+      "market8": false
+    }
+  },
+  {
+    "0x978a89b0178ea8054a99f5bddb0081ea6a3c27c3": {
+      "market1": true,
+      "market2": true,
+      "market3": true,
+      "market4": true,
+      "market5": true,
+      "market6": true,
+      "market7": true,
+      "market8": true
+    }
+  },
+  {
+    "0xa63cb29de16607dd5ac18b6cb65bead58d04ac25": {
+      "market1": false,
+      "market2": false,
+      "market3": false,
+      "market4": false,
+      "market5": false,
+      "market6": false,
+      "market7": false,
+      "market8": false
+    }
+  },
+  {
+    "0xe082bda07536420401187ba7225ff5f56c30998b": {
+      "market1": true,
+      "market2": true,
+      "market3": true,
+      "market4": true,
+      "market5": true,
+      "market6": true,
+      "market7": true,
+      "market8": true
+    }
+  },
+  {
+    "0xe5d067d8634e109c077192c34c972a10ee6fc731": {
+      "market1": true,
+      "market2": true,
+      "market3": true,
+      "market4": false,
+      "market5": false,
+      "market6": true,
+      "market7": true,
+      "market8": false
+    }
+  },
+  {
+    "0xe5dd78c224f26e306c84a9b1aa2def30bdf15835": {
+      "market1": true,
+      "market2": false,
+      "market3": false,
+      "market4": false,
+      "market5": false,
+      "market6": false,
+      "market7": false,
+      "market8": false
+    }
+  },
+  {
+    "0xf035561dce033ded865e15e69db06cffc88d9213": {
+      "market1": true,
+      "market2": true,
+      "market3": true,
+      "market4": false,
+      "market5": false,
+      "market6": true,
+      "market7": false,
+      "market8": false
+    }
+  }
+]
