@@ -1,27 +1,29 @@
-import { log } from 'console';
-import { writeFileSync } from 'fs';
+import {writeFileSync} from 'fs';
 
 const constructQuery = (lastId) => `{
-  requests( 
-    where: {id_gt: "${String(lastId)}", status_in:["resolved","transferred"]}, 
-    first: 1000,  
-    orderBy: id, 
-    orderDirection: asc
+  requests(
+    first: 1000,
+    orderBy: id,
+    orderDirection: asc,
+    where: {
+      id_gt: "${String(lastId)}",
+      status: "resolved",
+      revocation: false
+    }
   ) {
-    id
     requester
+    id
   }
 }`;
 
 const sleep = async (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-const allhumans = [];
-let lastId = "";
-
+const allhumans = []
+let lastId = ""
 while (true) {
-    console.log("Fetching batch...", allhumans.length, lastId);
-    await sleep(100);
-    const response = await fetch('https://api.studio.thegraph.com/query/64099/poh-origin-mainnet/v0.0.4', {
+    console.log("Fetching batch...", allhumans.length, lastId)
+    await sleep(100)
+    const response = await fetch('https://gateway.thegraph.com/api/d5c7982a40f63da9504805d11919004d/subgraphs/id/8oHw9qNXdeCT2Dt4QPZK9qHZNAhPWNVrCKnFDarYEJF5', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,35 +31,20 @@ while (true) {
         body: JSON.stringify({ query: constructQuery(lastId) })
     });
 
-    // Check if the response is OK
-    if (!response.ok) {
-        console.error(`HTTP error! Status: ${response.status}`);
-        const errorMessage = await response.text(); // Read the error message
-        console.error(errorMessage);
-        break; // Exit the loop on error
-    }
-
     const jsonResponse = await response.json();
-
-    // Log the entire response for debugging
-    console.log("Full Response:", JSON.stringify(jsonResponse, null, 2));
-
-    // Check if data and requests are present
     const batch = jsonResponse.data?.requests;
+    
     if (!batch || batch.length === 0) {
-        console.log("No more data to fetch or batch is empty.");
+        console.log("No more data to fetch.");
         break;
     }
 
-    console.log(batch);
     lastId = batch[batch.length - 1].id;
     allhumans.push(...batch.map(request => request.requester));
     
-    // If the batch length is less than 1000, we are done
-    if (batch.length !== 1000) break;
+    if (batch.length < 1000) break;
 }
 
-console.log(allhumans.length);
 const dedupe = [...new Set(allhumans)];
-console.log(dedupe.length);
-writeFileSync("humans-v2-mainnet.txt", dedupe.join("\n"));
+console.log("Total addresses:", dedupe.length);
+writeFileSync("poh-addresses-mainnet-v2.txt", dedupe.join("\n"));

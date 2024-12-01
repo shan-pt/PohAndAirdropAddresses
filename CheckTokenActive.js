@@ -3,7 +3,7 @@ import {writeFileSync} from 'fs';
 // Set up Web3 with the Gnosis Chain RPC URL
 const web3 = new Web3("https://rpc.gnosischain.com");
 
-import data from "./jurors-mainnet_airdrop_claim.json" with { type: "json" };
+import data from "./humans-gnosis_airdrop_claim.json" with { type: "json" };
 
 // Define the contract ABI and addresses
 const contractAddresses = {

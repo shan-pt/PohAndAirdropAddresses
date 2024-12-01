@@ -7,8 +7,8 @@ const readAddressesFromFile = (filename) => {
 };
 
 // Read addresses from both files
-const addressesV1 = readAddressesFromFile('humans-v1.txt');
-const addressesV2 = readAddressesFromFile('humans-v2-mainnet.txt');
+const addressesV1 = readAddressesFromFile('poh-addresses-mainnet-v2.txt');
+const addressesV2 = readAddressesFromFile('human-mainnet-old.txt');
 
 // Create sets for easier comparison
 const setV1 = new Set(addressesV1);

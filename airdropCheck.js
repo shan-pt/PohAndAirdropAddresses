@@ -1,6 +1,6 @@
 import Web3 from 'web3';
 import {writeFileSync} from 'fs';
-import data from './jurors-mainnet.json' with { type: "json" };
+import data from './humans-gnosis.json' with { type: "json" };
 // Connect to the Gnosis Chain or Ethereum RPC URL (replace with actual RPC URL)
 const rpcUrl = 'https://rpc.gnosischain.com'; // Replace with Gnosis Chain RPC
 const web3 = new Web3(new Web3.providers.HttpProvider(rpcUrl));
@@ -63,6 +63,8 @@ async function checkClaims() {
             const hasClaimed = await contract.methods.claimed(address).call();
             if (hasClaimed) {
                 claimedAddresses.push(address);
+                console.log(address);
+                
             }
         } catch (error) {
             console.error(`Error checking claim for address ${address}:`, error);
